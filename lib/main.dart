@@ -23,12 +23,41 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red[300],
       appBar: AppBar(
         title: const Text('First Sample'),
+        centerTitle: true,
+        // bar color
+        backgroundColor: Colors.red,
+        // app bar line
+        elevation: 0.0,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(40.0, 30.0, 0.0, 0.0),
         child: Column(
-          children: const [Text('Hi'), Text('Hi'), Text('Hi')],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Text(
+              'Name',
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              'JunQ',
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text('Hi'),
+          ],
         ),
       ),
     );
