@@ -11,8 +11,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'First app',
       // color sample
-      theme: ThemeData(primarySwatch: Colors.blue), // Theme data
-      home: const MyHomePage(),
+      theme: ThemeData(primarySwatch: Colors.red), // Theme data
+      // home: const FirstRoute(),
+      // set routes -> because we need to separate class
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const FirstRoute(),
+        '/second': (context) => const SecondRoute(),
+      },
     );
   }
 }
@@ -58,6 +64,56 @@ class MyHomePage extends StatelessWidget {
             ),
             Text('Hi'),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/*
+ pop - up -> new page
+ called Route -> can make two pages
+ */
+class FirstRoute extends StatelessWidget {
+  const FirstRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Route'),
+      ),
+      body: Center(
+        child: MaterialButton(
+            child: const Text('Open Route'),
+            onPressed: () {
+              // Navigator.push -> go to 'builder: (context) =>' call class
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const SecondRoute()));
+              Navigator.pushNamed(context, '/second');
+            }),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        // RaisedButton -> MaterialButton
+        child: MaterialButton(
+          onPressed: () {
+            // onPressed -> Navigator.pop : clean all routes and back to current Route
+            Navigator.pop(context);
+          },
+          child: const Text('Back'),
         ),
       ),
     );
