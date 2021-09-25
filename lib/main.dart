@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const FirstRoute(),
         '/second': (context) => const SecondRoute(),
+        '/third':(context) => const ThirdRoute(),
       },
     );
   }
@@ -90,7 +91,7 @@ class FirstRoute extends StatelessWidget {
               // Navigator.push -> go to 'builder: (context) =>' call class
               // Navigator.push(context,
               //     MaterialPageRoute(builder: (context) => const SecondRoute()));
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushNamed(context, '/third');
             }),
       ),
     );
@@ -118,4 +119,39 @@ class SecondRoute extends StatelessWidget {
       ),
     );
   }
+}
+
+class ThirdRoute extends StatelessWidget{
+  const ThirdRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        // how many tabs
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                // tab icons
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Icon(Icons.directions_bike)),
+              ],
+            ),
+            title: const Text('TabsDemo'),
+          ),
+          body: const TabBarView(
+            children: [
+              Icon(Icons.directions_car),
+              Icon(Icons.directions_transit),
+              Icon(Icons.directions_bike),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
 }
