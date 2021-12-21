@@ -1,4 +1,4 @@
-// for dart
+// for dart -> sdk 재세팅완료
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
