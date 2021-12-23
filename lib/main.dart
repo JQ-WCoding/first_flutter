@@ -40,6 +40,7 @@ class MyHomePage extends StatelessWidget {
         elevation: 0.0,
       ),
       body: Padding(
+        // 크기조절
         padding: const EdgeInsets.fromLTRB(40.0, 30.0, 0.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
